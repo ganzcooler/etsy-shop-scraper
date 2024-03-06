@@ -4,7 +4,7 @@ import os
 from datetime import datetime
 
 # Get shop url
-url = input()
+url = input("Shop-Verkaufs-URL (.../shop/SHOP_NAME/sold): ")
 if not url.endswith("sold"):
     raise ValueError("Falsche Shop-URL")
 start_index = url.find("shop/") + len("shop/")
@@ -72,10 +72,5 @@ sorted_tags = sorted(tag_counts.items(), key=lambda x: x[1], reverse=True)
 with open(enumeration_file_path, 'w', encoding='utf-8') as enumeration_file:
     for tag, count in sorted_tags:
         enumeration_file.write(f"{tag}: {count}\n")
-
-# Schreibe die h3-Tags in die Datei im aktuellen Verzeichnis
-with open(file_path, 'w', encoding='utf-8') as file:
-    for tag in all_h3_tags:
-        file.write(tag + '\n')
 
 print("Done.")
